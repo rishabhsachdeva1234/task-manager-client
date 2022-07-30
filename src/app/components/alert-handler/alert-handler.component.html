@@ -1,0 +1,13 @@
+<div class="messageHandler">
+  <ngb-toast
+    *ngIf="isStatus"
+    [delay]="3000"
+    [autohide]="autohide"
+    (mouseenter)="autohide = false"
+    (mouseleave)="autohide = true"
+    (hide)="isStatus = false; autohide = true"
+    [class]="statusClass"
+  >
+    <p class="text-light fs-6 text-center my-auto">{{ statusMessage }}</p>
+  </ngb-toast>
+</div>

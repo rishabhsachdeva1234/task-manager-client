@@ -1,0 +1,55 @@
+<div class="container col-sm-6 mx-auto">
+  <form [formGroup]="editTaskForm" (ngSubmit)="updateTask()">
+    <div class="card shadow mt-5 mb-5">
+      <div class="card-body">
+        <h4 class="text-center mt-3 mb-3">Edit Task</h4>
+        <div class="form-group row mb-3">
+          <label class="col-sm-3 col-form-label my-auto">Task ID:</label>
+          <label class="col-sm-9 col-form-label my-auto">{{ taskID }}</label>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-sm-3 col-form-label my-auto">Name:</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="New Task..."
+              required
+            />
+          </div>
+          <small
+            class="text-danger mt-2"
+            *ngIf="getTaskName.dirty && getTaskName.hasError('required')"
+            >Field is required <sup>*</sup></small
+          >
+          <small
+            class="text-danger mt-2"
+            *ngIf="getTaskName.hasError('maxlength') && getTaskName.dirty"
+            >Max 20 characters are allowed</small
+          >
+          <small
+            class="text-danger mt-2"
+            *ngIf="getTaskName.hasError('minlength') && getTaskName.dirty"
+            >Name must be atleast 3 characters long</small
+          >
+        </div>
+        <div class="mb-3">
+          <label class="col-sm-3 col-form-label my-1"> Completed: </label>&nbsp;
+          <input
+            class="form-check-input col-sm-9 mt-3"
+            type="checkbox"
+            formControlName="completed"
+          />
+        </div>
+        <div class="text-center mb-3">
+          <button class="btn btn-sm btn-primary w-50">Update</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="text-center">
+    <button class="btn btn-dark w-50" routerLink="/task">Back To Tasks</button>
+  </div>
+</div>
