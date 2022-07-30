@@ -24,7 +24,7 @@ export class ParseErrorInterceptor implements HttpInterceptor {
   }
 
   private _errorHandler(err: any) {
-    let message = 'Internal Server Error';
+    let message = 'Internal Server Error!';
     if (err.error && err.error.message) message = err.error.message;
     this._alertService.sendAlert(message, true);
   }
